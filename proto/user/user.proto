@@ -5,12 +5,10 @@ option go_package = "github.com/oneshick/project-protos/proto/user";
 message User {
   uint32 id = 1;
   string email = 2;
-  // Убрали name - его нет в модели
 }
 
 message CreateUserRequest {
   string email = 1;
-  // Убрали name
 }
 
 message CreateUserResponse {
@@ -24,7 +22,6 @@ message GetUserRequest {
 message UpdateUserRequest {
   uint32 id = 1;
   string email = 2;
-  // Убрали name
 }
 
 message UpdateUserResponse {
