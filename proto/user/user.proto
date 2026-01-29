@@ -3,7 +3,7 @@ package user;
 option go_package = "github.com/oneshick/project-protos/proto/user";
 
 message User {
-  uint32 id = 1;
+  string id = 1;          
   string email = 2;
 }
 
@@ -16,11 +16,11 @@ message CreateUserResponse {
 }
 
 message GetUserRequest {
-  uint32 id = 1;
+  string id = 1;         
 }
 
 message UpdateUserRequest {
-  uint32 id = 1;
+  string id = 1;         
   string email = 2;
 }
 
@@ -29,7 +29,7 @@ message UpdateUserResponse {
 }
 
 message DeleteUserRequest {
-  uint32 id = 1;
+  string id = 1;         
 }
 
 message DeleteUserResponse {
