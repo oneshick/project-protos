@@ -3,17 +3,17 @@ package task;
 option go_package = "github.com/oneshick/project-protos/proto/task";
 
 message Task {
-  uint32 id = 1;
+  string id = 1;          // ← string, не uint32
   string title = 2;
-  string description = 3;
-  bool completed = 4;
-  uint32 user_id = 5;
+  string status = 3;      // ← status, не description
+  string user_id = 4;     // ← string, не uint32
+  // Убрал: bool completed (у нас есть status)
 }
 
 message CreateTaskRequest {
   string title = 1;
-  string description = 2;
-  uint32 user_id = 3;
+  string user_id = 2;     // ← string, не uint32
+  // Убрал: description (у нас нет)
 }
 
 message CreateTaskResponse {
@@ -21,14 +21,14 @@ message CreateTaskResponse {
 }
 
 message GetTaskRequest {
-  uint32 id = 1;
+  string id = 1;          // ← string, не uint32
 }
 
 message UpdateTaskRequest {
-  uint32 id = 1;
+  string id = 1;          // ← string, не uint32
   string title = 2;
-  string description = 3;
-  bool completed = 4;
+  string status = 3;      // ← status, не description
+  // Убрал: bool completed
 }
 
 message UpdateTaskResponse {
@@ -36,7 +36,7 @@ message UpdateTaskResponse {
 }
 
 message DeleteTaskRequest {
-  uint32 id = 1;
+  string id = 1;          // ← string, не uint32
 }
 
 message DeleteTaskResponse {
@@ -46,12 +46,16 @@ message DeleteTaskResponse {
 message ListTasksRequest {
   uint32 limit = 1;
   uint32 offset = 2;
-  uint32 user_id = 3;
+  string user_id = 3;     // ← string, не uint32 (опционально)
 }
 
 message ListTasksResponse {
   repeated Task tasks = 1;
   uint32 total = 2;
+}
+
+message ListTasksByUserRequest {
+  string user_id = 1;     // ← добавил отдельный метод
 }
 
 service TaskService {
@@ -60,4 +64,5 @@ service TaskService {
   rpc UpdateTask (UpdateTaskRequest) returns (UpdateTaskResponse);
   rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
   rpc ListTasks (ListTasksRequest) returns (ListTasksResponse);
+  rpc ListTasksByUser (ListTasksByUserRequest) returns (ListTasksResponse);
 }
