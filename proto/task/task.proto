@@ -3,17 +3,16 @@ package task;
 option go_package = "github.com/oneshick/project-protos/proto/task";
 
 message Task {
-  string id = 1;          // ← string, не uint32
+  string id = 1;          
   string title = 2;
-  string status = 3;      // ← status, не description
-  string user_id = 4;     // ← string, не uint32
-  // Убрал: bool completed (у нас есть status)
+  string status = 3;     
+  string user_id = 4;     
 }
 
 message CreateTaskRequest {
   string title = 1;
-  string user_id = 2;     // ← string, не uint32
-  // Убрал: description (у нас нет)
+  string user_id = 2;     
+  string status = 3;
 }
 
 message CreateTaskResponse {
@@ -21,14 +20,13 @@ message CreateTaskResponse {
 }
 
 message GetTaskRequest {
-  string id = 1;          // ← string, не uint32
+  string id = 1;          
 }
 
 message UpdateTaskRequest {
-  string id = 1;          // ← string, не uint32
+  string id = 1;         
   string title = 2;
-  string status = 3;      // ← status, не description
-  // Убрал: bool completed
+  string status = 3;      
 }
 
 message UpdateTaskResponse {
@@ -36,7 +34,7 @@ message UpdateTaskResponse {
 }
 
 message DeleteTaskRequest {
-  string id = 1;          // ← string, не uint32
+  string id = 1;          
 }
 
 message DeleteTaskResponse {
@@ -46,7 +44,7 @@ message DeleteTaskResponse {
 message ListTasksRequest {
   uint32 limit = 1;
   uint32 offset = 2;
-  string user_id = 3;     // ← string, не uint32 (опционально)
+  string user_id = 3;     
 }
 
 message ListTasksResponse {
@@ -55,7 +53,7 @@ message ListTasksResponse {
 }
 
 message ListTasksByUserRequest {
-  string user_id = 1;     // ← добавил отдельный метод
+  string user_id = 1;    
 }
 
 service TaskService {
