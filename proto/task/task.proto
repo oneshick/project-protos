@@ -41,10 +41,7 @@ message DeleteTaskResponse {
   bool success = 1;
 }
 
-message ListTasksRequest {
-  uint32 limit = 1;
-  uint32 offset = 2;
-  string user_id = 3;     
+message ListTasksRequest {   
 }
 
 message ListTasksResponse {
