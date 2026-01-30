@@ -25,8 +25,8 @@ message GetTaskRequest {
 
 message UpdateTaskRequest {
   string id = 1;         
-  string title = 2;
-  string status = 3;      
+  optional string title = 2;
+  optional string status = 3;      
 }
 
 message UpdateTaskResponse {
